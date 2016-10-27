@@ -1,0 +1,163 @@
+@charset "UTF-8";
+@-ms-viewport {width: device-width;} @viewport {width: device-width;}
+
+/* ---------------------------------------------------------------------
+Project Name: Example
+Client: Example
+------------------------------------------------------------------------
+*1. Reset Styles
+*2. Global Styles
+*3. Grid Styles
+*4. Modul Styles
+*5. Media Queries
+----------------------------------------------------------------------- */
+
+/* ==============================
+	*1. Reset / Basic Styles
+================================= */
+
+
+html {
+	font-size: 62.5%;
+	min-height: 100%;
+	color: #fff;
+	background-color: #000;
+	-webkit-text-size-adjust: 100%; 
+		-ms-text-size-adjust: 100%;
+}
+body, textarea, input, button {
+	font-family: sans-serif;
+	font-kerning: normal;
+}
+body {
+	
+}
+
+body,
+p, h1, h2, h3, h4, h5, h6, 
+div, ul, ol, li, dd, dt, dl, table, td, th
+blockquote, address, hr, pre, 
+article, aside, audio, canvas, details, figure, figcaption, footer, header, hgroup, 
+iframe, main, menu, nav, section, summary, video,
+form, fieldset, legend, label, input, textarea {
+	margin: 0;
+	padding: 0;
+}
+
+p, li, h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 1em;
+	-webkit-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+			text-size-adjust: none;
+	/* -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing : grayscale; */
+	
+	-webkit-hyphens: auto;
+	   -moz-hyphens: auto;
+	    -ms-hyphens: auto;
+			hyphens: auto;
+	-ms-hyphenate-limit-lines: 1;
+	-ms-hyphenate-limit-chars: 6 3 3;
+		hyphenate-limit-lines: 1; /* consecutive  */
+		hyphenate-limit-chars: 6 3 3;		
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section { 
+    display: block;
+}
+audio, video, canvas, progress {
+	display: inline-block; vertical-align: baseline;
+}
+
+a, button {
+	outline: none;
+	outline-offset: 5em;
+	transition: 1s ease outline-offset;
+}
+a {background-color: inherit;}
+a:hover, a:active {text-decoration: underline;}
+a:visited {color: #509; /* background-color: #eee; */}
+a:active, button:active {outline: none;}
+
+:focus {outline: 0.1em dotted;  outline-offset: 0.1em;}
+embed:focus, object:focus, a img {border: none;}
+
+img, object, embed {max-width: 100%;} 
+/*img {
+	image-rendering: -moz-crisp-edges;
+	image-rendering:   -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+	-ms-interpolation-mode: nearest-neighbor;
+}*/
+img:-moz-broken, img:-moz-user-disabled {display: none;}
+
+abbr[title], dfn[title], q {cursor: help; border-bottom: 0.1em dotted;}
+input[disabled], textarea[disabled], button[disabled] {cursor: not-allowed;}
+
+label[for], button {cursor: pointer;}
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0; padding: 0;
+}
+
+/* ==============================
+	*2. Global Styles
+================================= */
+
+/* Clearfix */
+.box::before, .box::after {
+    content: "";
+    display: table;
+} 
+.box::after {clear: both;}
+
+/* visually hidden */
+.hideText {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* development */ 
+#html:target::before, #html:target::after {
+	content: "";
+	font-size: 200%;
+	position: fixed; top: 1em; left: 1em;
+	display: none;
+	width: 10em;
+	padding: 0.5em;
+	
+	border: 0.2em solid red;
+	background: rgba(255, 50, 50, 0.6);
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0.2em #fff;
+	z-index: 100;
+}
+#html:target::after {
+	border-color: blue;
+	background: rgba(50, 50, 255, 0.6);
+	left: 14em;
+}
+
+/* ==============================
+	*3. Page Styles
+================================= */
+
+
+	
+/* ==============================
+	*4. Media Queries
+================================= */
+
+@media (min-width: 100px)  {
+	#html:target::before {opacity: 0.6; display: block; content: "> 1000px"; }
+	
+	
+}
+
+
+	
+	

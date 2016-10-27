@@ -1,0 +1,31 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^([^.]+)\.example.com$ [NC]
+RewriteRule ^(.*)$ http://example.com/$1 [R=301,L]
+
+AddDefaultCharset UTF-8
+DefaultLanguage de-DE
+
+ErrorDocument 404 /Error.php
+
+
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+
+#Expire Header
+ExpiresActive On
+ExpiresByType image/gif "access plus 7 days"
+ExpiresByType image/jpeg "access plus 7 days"
+ExpiresByType image/png "access plus 7 days"
+ExpiresByType image/x-icon "access plus 7 day"
+ExpiresByType text/css "access plus 7 day"
+ExpiresByType text/javascript "access plus 7 day"
+ExpiresByType application/javascript "access plus 7 day"
+ExpiresByType image/svg+xml "access plus 7 day"
