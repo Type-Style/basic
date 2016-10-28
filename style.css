@@ -152,11 +152,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	*4. Media Queries
 ================================= */
 
-@media (min-width: 100px)  {
-	#html:target::before {opacity: 0.6; display: block; content: "> 1000px"; }
-	
-	
-}
+@media (min-width: 30em){#html:target::before {opacity: 0.6; display: block; content: ">= 480px"; }}
+@media (min-width: 48em){#html:target::before {opacity: 0.6; display: block; content: ">= 768px"; }}
+@media (min-width: 64em){#html:target::before {opacity: 0.6; display: block; content: ">= 1024px"; }}
+@media (min-width: 75em){#html:target::before {opacity: 0.6; display: block; content: ">= 1200px"; }}
+@media (min-width: 100em){#html:target::before {opacity: 0.6; display: block; content: ">= 1600px"; }}
 
 
 	
