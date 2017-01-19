@@ -56,7 +56,7 @@ p, li, h1, h2, h3, h4, h5, h6 {
 	-webkit-hyphens: auto;
 	   -moz-hyphens: auto;
 	    -ms-hyphens: auto;
-			hyphens: auto;
+		hyphens: auto;
 	-ms-hyphenate-limit-lines: 1;
 	-ms-hyphenate-limit-chars: 6 3 3;
 		hyphenate-limit-lines: 1; /* consecutive  */
@@ -125,9 +125,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	content: "";
 	font-size: 200%;
 	position: fixed; top: 1em; left: 1em;
-	display: none;
 	width: 10em;
 	padding: 0.5em;
+	opacity: 0.8;
 	
 	border: 0.2em solid red;
 	background: rgba(255, 50, 50, 0.6);
@@ -152,11 +152,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	*4. Media Queries
 ================================= */
 
-@media (min-width: 30em){#html:target::before {opacity: 0.6; display: block; content: ">= 480px"; }}
-@media (min-width: 48em){#html:target::before {opacity: 0.6; display: block; content: ">= 768px"; }}
-@media (min-width: 64em){#html:target::before {opacity: 0.6; display: block; content: ">= 1024px"; }}
-@media (min-width: 75em){#html:target::before {opacity: 0.6; display: block; content: ">= 1200px"; }}
-@media (min-width: 100em){#html:target::before {opacity: 0.6; display: block; content: ">= 1600px"; }}
+@media (min-width: 30em){#html:target::before {content: ">= 480px"; }}
+@media (min-width: 48em){#html:target::before {content: ">= 768px"; }}
+@media (min-width: 64em){#html:target::before {content: ">= 1024px"; }}
+@media (min-width: 75em){#html:target::before {content: ">= 1200px"; }}
+@media (min-width: 100em){#html:target::before {content: ">= 1600px"; }}
 
 
 	
