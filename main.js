@@ -6,9 +6,9 @@ var main = {
             var bool = true;
         }
 
-        localStorage.setItem('debug', bool);
+        sessionStorage.setItem('debug', bool);
 
-        if (localStorage.getItem('debug') === "true" || localStorage.getItem('debug') === true) {
+        if (sessionStorage.getItem('debug') === "true" || sessionStorage.getItem('debug') === true) {
             window.debug = true;
         } else {
             window.debug = false;
@@ -17,14 +17,13 @@ var main = {
     },
     init: function() {
         // debugging
-        if (localStorage.getItem('debug') === "true" || localStorage.getItem('debug') === true) {
+        if (sessionStorage.getItem('debug') === "true" || sessionStorage.getItem('debug') === true) {
             window.debug = true;
             console.info(this.shortName + " init is running, debug enabled");
         } else {
             window.debug = false;
-            console.info("Enable Debugging by running: "+ this.shortName +".enableDebugging();");
+            console.info("Enable Debugging by running: " + this.shortName + ".enableDebugging();");
         }
-
 
         /* general things and patches */
         document.querySelector('html').classList.remove("no-js");
@@ -40,8 +39,6 @@ var main = {
 
         var tempObj = Object.create(this);
         Object.keys(parameterObj).forEach(function(key) {
-			// if parameterObj[key] is a function it does not work
-			
             tempObj[key] = parameterObj[key];
 			console.info("parameterObj[key]" , parameterObj[key]);
         });
@@ -132,7 +129,7 @@ var main = {
 
 
 function ready(fn) {
-  if (document.readyState != 'loading'){
+  if (document.readyState != 'loading') {
     fn();
   } else {
     document.addEventListener('DOMContentLoaded', fn);
