@@ -27,10 +27,8 @@ var main = {
 
 
         /* general things and patches */
-        $('html').removeClass("no-js");
-        $('img').removeAttr('height').removeAttr('width');
-        svg4everybody();
-
+        document.querySelector('html').classList.remove("no-js");
+        
         /* sets prototype and moves methods */
         this.createMethods(this.methods);
         delete this.methods;
@@ -42,7 +40,10 @@ var main = {
 
         var tempObj = Object.create(this);
         Object.keys(parameterObj).forEach(function(key) {
+			// if parameterObj[key] is a function it does not work
+			
             tempObj[key] = parameterObj[key];
+			console.info("parameterObj[key]" , parameterObj[key]);
         });
         return tempObj;
     },
@@ -54,20 +55,26 @@ var main = {
             throw new Error ("createMethods, paramter is not an object");
             return false;
         }
-        var obj = methods;
-        for (var prop in obj) {
+
+        for (var prop in methods) {
             // skip loop if the property is from prototype
-            if (!obj.hasOwnProperty(prop)) { continue }
-            this[prop] = this.createObj(methods[prop]);
-            if (debug) {console.log("createMethods, ",prop," > ", this[prop]);}
+            if (!methods.hasOwnProperty(prop)) { continue }
+			
+			if (typeof methods[prop] === "function") { 
+				this[prop] = methods[prop];	// just adopt the function	
+			} else if (typeof methods[prop] === "object") {			
+				this[prop] = this.createObj(methods[prop]); // get a new object	through createObj();
+			} 
+			
+			if (debug) {console.log("createMethods, ", prop, " > ", this[prop]);}
         }
     },
     methods: {
         /* these methods can be called from everywhere through prototype
          * these methods will be moved outside of the methods object, which is going to removed */
 
-       // for testing and understanding
-       /* test: {
+		// for testing and understanding
+        test: {
             init: function() {
                 this.name = "testName";
                 this.createMethods(this.subMethods); delete this.subMethods;
@@ -75,14 +82,18 @@ var main = {
             subMethods: {
                 subObj: {
                     init: function() {
-                        console.log("subClass logsName:",this.name);
+                        console.log("subClass log this.name:", this.name);
+						console.log(
+							"check4Existance #wrapper: ",
+							this.check4Existance(document.getElementById("wrapper"))
+						); 
                     }
                 }
             }
 
-        },*/
+        },
         isElementInViewport: function (el) {
-            //special bonus for those using jQuery
+            // special bonus for those using jQuery
             if (typeof jQuery === "function" && el instanceof jQuery) {
                 el = el[0];
             }
@@ -105,7 +116,7 @@ var main = {
             );
         },
         check4Existance: function() {
-            if (debug) { console.log("check4Existance %o",arguments);}
+            if (debug) { console.log("check4Existance %o", arguments);}
             var exists  = true;
             for (var i = arguments.length-1; i >= 0; i--) {
                 var current = arguments[i];
@@ -117,4 +128,18 @@ var main = {
         }
     }
 }
+
+
+
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}(main.init());
+
+
+
+
 
