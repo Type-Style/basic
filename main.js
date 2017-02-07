@@ -34,19 +34,21 @@ var main = {
         
     },
     createObj: function(parameterObj) {
-        /* creates object with prototype set to from where to function is called
+        /* creates new object with prototype set to from where to function is called
          * and merges properties and values from given parameter in Object from */
-
+		if (typeof parameterObj !== "object") {
+			if (debug) {console.error("createObj parameter %o is not an Object", parameterObj);}
+			return false
+		}
         var tempObj = Object.create(this);
         Object.keys(parameterObj).forEach(function(key) {
             tempObj[key] = parameterObj[key];
-			console.info("parameterObj[key]" , parameterObj[key]);
         });
         return tempObj;
     },
     createMethods: function(methods) {
         /* moves the methods outside of out of its object
-         * and sets prototype see createObj for details */
+         * and sets prototype see function createObj for details */
 
         if (typeof methods != "object") {
             throw new Error ("createMethods, paramter is not an object");
@@ -57,10 +59,10 @@ var main = {
             // skip loop if the property is from prototype
             if (!methods.hasOwnProperty(prop)) { continue }
 			
-			if (typeof methods[prop] === "function") { 
-				this[prop] = methods[prop];	// just adopt the function	
-			} else if (typeof methods[prop] === "object") {			
+			if (typeof methods[prop] === "object") {
 				this[prop] = this.createObj(methods[prop]); // get a new object	through createObj();
+			} else {		
+				this[prop] = methods[prop];	// just adopt the function or string etc.
 			} 
 			
 			if (debug) {console.log("createMethods, ", prop, " > ", this[prop]);}
