@@ -50,7 +50,7 @@ var main = {
         /* moves the methods outside of out of its object
          * and sets prototype see function createObj for details */
 
-        if (typeof methods != "object") {
+        if (typeof methods !== "object") {
             throw new Error ("createMethods, paramter is not an object");
             return false;
         }
@@ -83,8 +83,8 @@ var main = {
                     init: function() {
                         console.log("subClass log this.name:", this.name);
 						console.log(
-							"check4Existance #wrapper: ",
-							this.check4Existance(document.getElementById("wrapper"))
+							"check4Existence #wrapper: ",
+							this.check4Existence(document.getElementById("wrapper"))
 						); 
                     }
                 }
@@ -114,14 +114,20 @@ var main = {
                 rect.left <= (window.innerWidth || document.documentElement.clientWidth)
             );
         },
-        check4Existance: function() {
-            if (debug) { console.log("check4Existance %o", arguments);}
+        check4Existence: function() {
+            if (debug) { console.log("check4Existence %o", arguments);}
             var exists  = true;
-            for (var i = arguments.length-1; i >= 0; i--) {
+            for (var i = arguments.length - 1; i >= 0; i--) {
                 var current = arguments[i];
-                if (!current) {
-                    exists = false;
-                }
+				if (typeof jQuery === "function" && current instanceof jQuery) { // is it a jQuery Object?
+					if (!current.length) {			
+						exists = false;
+					}
+				} else {
+					if (!current) {
+						exists = false;
+					}
+				}
                 return exists;
             }
         }
