@@ -5,15 +5,15 @@
 Project Name: Example
 Client: Example
 ------------------------------------------------------------------------
-*1. Reset Styles
-*2. Global Styles
-*3. Grid Styles
-*4. Modul Styles
+*1. Reset / basic styles
+*2. Global / helper styles
+*3. Grid styles
+*4. Module styles
 *5. Media Queries
 ----------------------------------------------------------------------- */
 
 /* ==============================
-	*1. Reset / Basic Styles
+	*1. Reset / basic styles
 ================================= */
 
 
@@ -103,7 +103,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 /* ==============================
-	*2. Global Styles
+	*2. Global / helper styles
 ================================= */
 
 /* Clearfix */
@@ -143,9 +143,13 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 /* ==============================
-	*3. Page Styles
+	*3. Grid styles
 ================================= */
 
+
+/* ==============================
+	*3. Module styles
+================================= */
 
 	
 /* ==============================
