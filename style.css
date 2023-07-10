@@ -76,7 +76,7 @@ a, button {
 	transition: 1s ease outline-offset;
 }
 a {background-color: inherit;}
-a:hover, a:active {text-decoration: underline;}
+a:is(:hover, :active) {text-decoration: underline;}
 a:visited {color: #509; /* background-color: #eee; */}
 a:active, button:active {outline: none;}
 
