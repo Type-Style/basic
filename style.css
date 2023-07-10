@@ -105,13 +105,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	*2. Global / helper styles
 ================================= */
 
-/* Clearfix */
-.box::before, .box::after {
-    content: "";
-    display: table;
-} 
-.box::after {clear: both;}
-
 /* visually hidden */
 .hideText {
 	text-indent: 100%;
