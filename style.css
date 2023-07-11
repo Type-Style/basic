@@ -5,8 +5,8 @@ Project Name: Example
 Client: Example
 ------------------------------------------------------------------------
 *1. Reset
-*2. Helper styles
-*3. Global styles / Variables
+*2. Global styles / Variables
+*3. Helper styles
 *4. Grid styles
 *5. Module styles
 *6. Media Queries
@@ -16,12 +16,11 @@ Client: Example
 	*1. Reset
 ================================= */
 
-
 html {
 	font-size: 62.5%;
 	-webkit-text-size-adjust: 100%; 
-	-ms-text-size-adjust: 100%;
-	text-size-adjust: none;
+		-ms-text-size-adjust: 100%;
+			text-size-adjust: none;
 }
 body, textarea, input, button {
 	font-family: sans-serif;
@@ -46,8 +45,8 @@ p, li, h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	font-size: 1em;
 	-webkit-text-size-adjust: none;
-	-ms-text-size-adjust: none;
-	text-size-adjust: none;
+		-ms-text-size-adjust: none;
+			text-size-adjust: none;
 	/* -moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing : grayscale; */
 	
@@ -101,7 +100,25 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 /* ==============================
-	*2. Helper styles
+	*2. Global styles / Variables
+================================= */
+:root {
+	--color-primary: #f90;
+	--color-bg: #666;
+	--time-animation: 250ms; 
+	--time-transition: 250ms; 
+}
+/* is the display HD? */
+@media (dynamic-range: high) {
+	/* does this browser understand display-p3? */
+	@supports (color: color(display-p3 0 0 0)) {
+		--color-primary: color(display-p3 1 0.6 0);   
+  	}
+}
+
+
+/* ==============================
+	*3. Helper styles
 ================================= */
 
 /* visually hidden */
@@ -109,6 +126,20 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+@media screen and
+  (prefers-reduced-motion: reduce), 
+  (update: slow) {
+	  :root {
+		  --animation-duration: 0.001ms !important; 
+		  --transition-duration: 0.001ms !important;
+ 	 }
+	 * {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important; 
+	    transition-duration: 0.001ms !important;
+	 }
 }
 
 /* development */ 
@@ -134,20 +165,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 
-/* ==============================
-	*3. Global styles / Variables
-================================= */
-:root {
-	--color-primary: #f90;
-	--color-bg: #666;
-}
-/* is the display HD? */
-@media (dynamic-range: high) {
-	/* does this browser understand display-p3? */
-	@supports (color: color(display-p3 0 0 0)) {
-		--color-primary: color(display-p3 1 0.6 0);   
-  	}
-}
 
 /* ==============================
 	*4. Grid styles
