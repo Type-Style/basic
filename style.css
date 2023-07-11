@@ -191,7 +191,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .wrapper {
 	margin-block: 3em;
 	margin-inline: auto;
-
+	border: solid var(--color-accent-primary);
+	max-width: 80%;
+	padding: 2em;	
 	background: var(--color-background-secondary);
 }
 .wrapper__headline {
