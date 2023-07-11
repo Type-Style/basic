@@ -4,25 +4,24 @@
 Project Name: Example
 Client: Example
 ------------------------------------------------------------------------
-*1. Reset / basic styles
-*2. Global / helper styles
-*3. Grid styles
-*4. Module styles
-*5. Media Queries
+*1. Reset
+*2. Helper styles
+*3. Global styles / Variables
+*4. Grid styles
+*5. Module styles
+*6. Media Queries
 ----------------------------------------------------------------------- */
 
 /* ==============================
-	*1. Reset / basic styles
+	*1. Reset
 ================================= */
 
 
 html {
 	font-size: 62.5%;
-	min-height: 100%;
-	color: #fff;
-	background-color: #000;
 	-webkit-text-size-adjust: 100%; 
-		-ms-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: none;
 }
 body, textarea, input, button {
 	font-family: sans-serif;
@@ -47,8 +46,8 @@ p, li, h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	font-size: 1em;
 	-webkit-text-size-adjust: none;
-		-ms-text-size-adjust: none;
-			text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	text-size-adjust: none;
 	/* -moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing : grayscale; */
 	
@@ -102,7 +101,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 /* ==============================
-	*2. Global / helper styles
+	*2. Helper styles
 ================================= */
 
 /* visually hidden */
@@ -134,18 +133,34 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	left: 14em;
 }
 
+
 /* ==============================
-	*3. Grid styles
+	*3. Global styles / Variables
+================================= */
+:root {
+	--color-primary: #f90;
+	--color-bg: #666;
+}
+/* is the display HD? */
+@media (dynamic-range: high) {
+	/* does this browser understand display-p3? */
+	@supports (color: color(display-p3 0 0 0)) {
+		--color-primary: color(display-p3 1 0.6 0);   
+  	}
+}
+
+/* ==============================
+	*4. Grid styles
 ================================= */
 
 
 /* ==============================
-	*3. Module styles
+	*5. Module styles
 ================================= */
 
 	
 /* ==============================
-	*4. Media Queries
+	*6. Media Queries
 ================================= */
 
 @media (min-width: 30em){#html:target::before {content: ">= 480px"; }}
