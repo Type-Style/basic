@@ -120,7 +120,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	:root {
 		--color-copy-primary: white;
 		--color-background-primary: black;
-		--color-background-secondary: #333;
+		--color-background-secondary: #ccc;
 	}
 }
 
