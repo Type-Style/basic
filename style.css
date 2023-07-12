@@ -21,6 +21,7 @@ html {
 	-webkit-text-size-adjust: 100%; 
 		-ms-text-size-adjust: 100%;
 			text-size-adjust: none;
+	scroll-behavior: smooth;
 }
 body, textarea, input, button {
 	font-family: sans-serif;
@@ -39,7 +40,10 @@ iframe, main, menu, nav, section, summary, video,
 form, fieldset, legend, label, input, textarea {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
+::before, ::after { box-sizing: border-box; }
+	
 
 p, li, h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
@@ -60,28 +64,16 @@ p, li, h1, h2, h3, h4, h5, h6 {
 		hyphenate-limit-chars: 6 3 3;		
 }
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, main, menu, nav, section { 
-    display: block;
-}
-audio, video, canvas, progress {
-	display: inline-block; vertical-align: baseline;
-}
-
-a, button {
-	outline: none;
-	outline-offset: 5em;
-	transition: 1s ease outline-offset;
-}
 a {background-color: inherit;}
 a:is(:hover, :active) {text-decoration: underline;}
 a:visited {color: #509; /* background-color: #eee; */}
 a:active, button:active {outline: none;}
 
 :focus {outline: 0.1em dotted;  outline-offset: 0.1em;}
+:focus:not(:focus-visible) { outline: none; }
 embed:focus, object:focus, a img {border: none;}
 
-img, object, embed {max-width: 100%;} 
+img, object, embed {display: inline-block; max-width: 100%; vertical-align: baseline;} 
 /*img {
 	image-rendering: -moz-crisp-edges;
 	image-rendering:   -o-crisp-edges;
@@ -94,7 +86,7 @@ img:-moz-broken, img:-moz-user-disabled {display: none;}
 abbr[title], dfn[title], q {cursor: help; border-bottom: 0.1em dotted;}
 input[disabled], textarea[disabled], button[disabled] {cursor: not-allowed;}
 
-label[for], button {cursor: pointer;}
+label[for], button, select, summary, [type=radio], [type=submit], [type=checkbox]  {cursor: pointer;}
 button::-moz-focus-inner, input::-moz-focus-inner {
     border: 0; padding: 0;
 }
@@ -148,14 +140,15 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 @media screen and
   (prefers-reduced-motion: reduce), 
   (update: slow) {
-	  :root {
+	 :root {
 		  --animation-duration: 0.001ms !important; 
 		  --transition-duration: 0.001ms !important;
+		 scroll-behavior: auto;
  	 }
 	 * {
-		animation-duration: 0.001ms !important;
-		animation-iteration-count: 1 !important; 
-	    transition-duration: 0.001ms !important;
+		 animation-duration: 0.001ms !important;
+		 animation-iteration-count: 1 !important;
+		 transition-duration: 0.001ms !important;
 	 }
 }
 
