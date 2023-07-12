@@ -86,9 +86,19 @@ img:-moz-broken, img:-moz-user-disabled {display: none;}
 abbr[title], dfn[title], q {cursor: help; border-bottom: 0.1em dotted;}
 input[disabled], textarea[disabled], button[disabled] {cursor: not-allowed;}
 
-label[for], button, select, summary, [type=radio], [type=submit], [type=checkbox]  {cursor: pointer;}
 button::-moz-focus-inner, input::-moz-focus-inner {
     border: 0; padding: 0;
+}
+
+label[for], button, select, summary, [type=radio], [type=submit], [type=checkbox]  {
+	cursor: pointer;
+}
+
+/*  touch devices, and anything other where there is no mouse */
+@media screen and (pointer: coarse) {
+	label[for] { font-size: 1.05em; }
+	[type="checkbox"] {	width: 1.5rem; height: 1.5rem; }
+	button { min-height: 3rem; }
 }
 
 /* ==============================
